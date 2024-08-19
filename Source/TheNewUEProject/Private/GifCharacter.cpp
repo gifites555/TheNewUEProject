@@ -47,6 +47,7 @@ void AGifCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompon
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
 	PlayerInputComponent->BindAxis("MoveForward", this, &AGifCharacter::MoveForward);
+	PlayerInputComponent->BindAxis("Turn", this, &APawn::AddControllerYawInput);
 
 }
 
