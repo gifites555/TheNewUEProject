@@ -12,8 +12,10 @@ AGifCharacter::AGifCharacter()
 	PrimaryActorTick.bCanEverTick = true;
 
 	SpringArmComp = CreateDefaultSubobject<USpringArmComponent>("SpringArmComp");
+	SpringArmComp->SetupAttachment(RootComponent);
 
 	CameraComp = CreateDefaultSubobject<UCameraComponent>("CameraComp");
+	CameraComp->SetupAttachment(SpringArmComp);
 }
 
 // Called when the game starts or when spawned
@@ -28,8 +30,6 @@ void AGifCharacter::BeginPlay()
 void AGifCharacter::MoveForward(float Value)
 {
 	AddMovementInput(GetActorForwardVector(), Value);
-
-
 
 
 }
