@@ -16,6 +16,8 @@ AGifCharacter::AGifCharacter()
 
 	CameraComp = CreateDefaultSubobject<UCameraComponent>("CameraComp");
 	CameraComp->SetupAttachment(SpringArmComp);
+
+	bUseControllerRotationPitch = true;
 }
 
 // Called when the game starts or when spawned
@@ -43,6 +45,7 @@ void AGifCharacter::MoveRAL(float Value)
 
 
 
+
 // Called every frame
 void AGifCharacter::Tick(float DeltaTime)
 {
@@ -57,8 +60,9 @@ void AGifCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompon
 
 	PlayerInputComponent->BindAxis("MoveForward", this, &AGifCharacter::MoveForward);
 	PlayerInputComponent->BindAxis("MoveRAL", this, &AGifCharacter::MoveRAL);
+
 	PlayerInputComponent->BindAxis("Turn", this, &APawn::AddControllerYawInput);
-	
+	//PlayerInputComponent->BindAxis("Up", this, &APawn::AddControllerPitchInput);
 
 
 }
