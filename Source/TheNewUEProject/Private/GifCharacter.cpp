@@ -34,6 +34,15 @@ void AGifCharacter::MoveForward(float Value)
 
 }
 
+void AGifCharacter::MoveRAL(float Value)
+{
+	AddMovementInput(GetActorRightVector(), Value);
+
+
+}
+
+
+
 // Called every frame
 void AGifCharacter::Tick(float DeltaTime)
 {
@@ -47,7 +56,10 @@ void AGifCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompon
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
 	PlayerInputComponent->BindAxis("MoveForward", this, &AGifCharacter::MoveForward);
+	PlayerInputComponent->BindAxis("MoveRAL", this, &AGifCharacter::MoveRAL);
 	PlayerInputComponent->BindAxis("Turn", this, &APawn::AddControllerYawInput);
+	
+
 
 }
 

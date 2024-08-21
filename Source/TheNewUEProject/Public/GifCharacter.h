@@ -29,6 +29,7 @@ protected:
 	virtual void BeginPlay() override;
 
 	void MoveForward(float Value);
+	void MoveRAL(float Value);
 
 	
 
