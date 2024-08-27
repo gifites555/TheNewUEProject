@@ -6,10 +6,10 @@
 #include "Kismet/KismetMathLibrary.h"
 
 
-// Sets default values
+// Подключение нужных компонентов к Пешке
 AGifCharacter::AGifCharacter()
 {
-    // Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+    
     PrimaryActorTick.bCanEverTick = true;
 
     SpringArmComp = CreateDefaultSubobject<USpringArmComponent>("SpringArmComp");
@@ -30,12 +30,13 @@ AGifCharacter::AGifCharacter()
    
 }
 
-// Called when the game starts or when spawned
+// Вызывается при запуске игры или при появлении
 void AGifCharacter::BeginPlay()
 {
     Super::BeginPlay();
 }
 
+// Логика для передвижения вперед
 void AGifCharacter::MoveForward(float Value)
 {
     if (Controller && Value != 0.0f)
@@ -44,6 +45,7 @@ void AGifCharacter::MoveForward(float Value)
 
         
         FRotator YawRotation(0, CameraRotation.Yaw, 0);
+
         FVector Direction = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::X);
 
         
@@ -51,6 +53,8 @@ void AGifCharacter::MoveForward(float Value)
     }
 }
 
+
+// Логика для передвижения влево и вправо
 void AGifCharacter::MoveRAL(float Value)
 {
     if (Controller && Value != 0.0f)
@@ -66,7 +70,7 @@ void AGifCharacter::MoveRAL(float Value)
     }
 }
 
-// Called every frame
+// Вызывается каждый кадр
 void AGifCharacter::Tick(float DeltaTime)
 {
     Super::Tick(DeltaTime);
@@ -74,7 +78,7 @@ void AGifCharacter::Tick(float DeltaTime)
    
 }
 
-// Called to bind functionality to input
+// Для подключения нужных функциональностей к персонажу
 void AGifCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
     Super::SetupPlayerInputComponent(PlayerInputComponent);
