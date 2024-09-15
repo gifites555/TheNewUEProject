@@ -8,7 +8,7 @@
 #include "Particles/ParticleSystemComponent.h"
 
 
-// Подключение нужных компонентов к Пешке
+
 AGifCharMagic::AGifCharMagic()
 {
     
@@ -28,14 +28,13 @@ AGifCharMagic::AGifCharMagic()
    
 }
 
-// Вызывается при запуске игры или при появлении
 void AGifCharMagic::BeginPlay()
 {
     Super::BeginPlay();
 }
 
 
-// Вызывается каждый кадр
+
 void AGifCharMagic::Tick(float DeltaTime)
 {
     Super::Tick(DeltaTime);

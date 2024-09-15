@@ -30,10 +30,10 @@ protected:
 	UPROPERTY(VisibleAnywhere)
 	UParticleSystemComponent* EffectComp;
 
-	
+
 	virtual void BeginPlay() override;
 
-	
+
 
 
 public:
