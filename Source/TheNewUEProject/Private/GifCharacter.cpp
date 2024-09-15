@@ -70,6 +70,22 @@ void AGifCharacter::MoveRAL(float Value)
     }
 }
 
+void AGifCharacter::PrimaryAttack()
+{
+
+    FVector HandLocation = GetMesh()->GetSocketLocation("Muzzle_01");
+
+    FTransform SpawnTM = FTransform(GetControlRotation(), HandLocation);
+
+    FActorSpawnParameters SpawnParams; 
+    SpawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+
+
+
+    GetWorld()->SpawnActor<AActor>(ProjectlieClass, SpawnTM, SpawnParams);
+
+}
+
 // Âûחûגאועסÿ ךאזהûי ךאהנ
 void AGifCharacter::Tick(float DeltaTime)
 {
@@ -89,4 +105,7 @@ void AGifCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompon
   
     PlayerInputComponent->BindAxis("Turn", this, &AGifCharacter::AddControllerYawInput);
     PlayerInputComponent->BindAxis("Up", this, &AGifCharacter::AddControllerPitchInput);
+
+    PlayerInputComponent->BindAction("PrimaryAttack", IE_Pressed, this, &AGifCharacter::PrimaryAttack);
+
 }

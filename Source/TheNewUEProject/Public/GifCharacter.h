@@ -19,6 +19,11 @@ public:
 	AGifCharacter();
 
 protected:
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<AActor> ProjectlieClass;
+
+
+protected:
 	UPROPERTY(VisibleAnyWhere)
 	UCameraComponent* CameraComp;
 
@@ -31,7 +36,7 @@ protected:
 	void MoveForward(float Value);
 	void MoveRAL(float Value);
 
-	
+	void PrimaryAttack();
 
 
 
