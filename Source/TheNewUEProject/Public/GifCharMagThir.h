@@ -1,26 +1,28 @@
+// Fill out your copyright notice in the Description page of Project Settings.
 
 #pragma once
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "GifCharMagic.generated.h"
+#include "GifCharMagThir.generated.h"
+
 
 class USphereComponent;
 class UProjectileMovementComponent;
 class UParticleSystemComponent;
 
+
 UCLASS()
-class THENEWUEPROJECT_API AGifCharMagic : public AActor
+class THENEWUEPROJECT_API AGifCharMagThir : public AActor
 {
 	GENERATED_BODY()
-
-public:
-
-
-	AGifCharMagic();
+	
+public:	
+	
+	AGifCharMagThir();
 
 protected:
-
+	
 	UPROPERTY(VisibleAnyWhere)
 	USphereComponent* SphereComp;
 
@@ -34,11 +36,8 @@ protected:
 	virtual void BeginPlay() override;
 
 
-
-
-public:
-
-
+public:	
+	
 	virtual void Tick(float DeltaTime) override;
 
 };

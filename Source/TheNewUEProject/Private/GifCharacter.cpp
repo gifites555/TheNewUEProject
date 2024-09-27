@@ -73,7 +73,7 @@ void AGifCharacter::MoveRAL(float Value)
 void AGifCharacter::PrimaryAttack()
 {
 
-    FVector HandLocation = GetMesh()->GetSocketLocation("Muzzle_01");
+    FVector HandLocation = GetMesh()->GetSocketLocation("Muzzle_Front");
 
     FTransform SpawnTM = FTransform(GetControlRotation(), HandLocation);
 
