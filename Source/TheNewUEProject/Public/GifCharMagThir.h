@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+
 
 #pragma once
 
@@ -31,6 +31,9 @@ protected:
 
 	UPROPERTY(VisibleAnywhere)
 	UParticleSystemComponent* EffectComp;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Movement")
+	class UProjectileMovementComponent* ProjectileMovement;
 
 
 	virtual void BeginPlay() override;

@@ -73,7 +73,7 @@ void AGifCharacter::MoveRAL(float Value)
 void AGifCharacter::PrimaryAttack()
 {
 
-    FVector HandLocation = GetMesh()->GetSocketLocation("Muzzle_Front");
+    FVector HandLocation = GetMesh()->GetSocketLocation("Muzzle_Front");    
 
     FTransform SpawnTM = FTransform(GetControlRotation(), HandLocation);
 
@@ -98,14 +98,15 @@ void AGifCharacter::Tick(float DeltaTime)
 void AGifCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
     Super::SetupPlayerInputComponent(PlayerInputComponent);
-
+   // Вперед - Влево - Вправо
     PlayerInputComponent->BindAxis("MoveForward", this, &AGifCharacter::MoveForward);
     PlayerInputComponent->BindAxis("MoveRAL", this, &AGifCharacter::MoveRAL);
 
-  
+   // Повороты камеры
     PlayerInputComponent->BindAxis("Turn", this, &AGifCharacter::AddControllerYawInput);
     PlayerInputComponent->BindAxis("Up", this, &AGifCharacter::AddControllerPitchInput);
 
+    // Выстрел
     PlayerInputComponent->BindAction("PrimaryAttack", IE_Pressed, this, &AGifCharacter::PrimaryAttack);
 
 }

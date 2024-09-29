@@ -13,28 +13,40 @@
 
 AGifCharMagThir::AGifCharMagThir()
 {
- 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+ 	
 	PrimaryActorTick.bCanEverTick = true;
+
     SphereComp = CreateDefaultSubobject<USphereComponent>("SphereComp");
+    SphereComp->SetCollisionObjectType(ECC_WorldDynamic);
+    
+    SphereComp->SetCollisionProfileName("Projectile");
+
     RootComponent = SphereComp;
 
     EffectComp = CreateDefaultSubobject<UParticleSystemComponent>("EffectComp");
     EffectComp->SetupAttachment(SphereComp);
 
+
+    ProjectileMovement = CreateDefaultSubobject<UProjectileMovementComponent>(TEXT("ProjectileMovement"));
     MovementComp = CreateDefaultSubobject<UProjectileMovementComponent>("MovementComp");
     MovementComp->InitialSpeed = 1000.0f;
     MovementComp->bRotationFollowsVelocity = true;
     MovementComp->bInitialVelocityInLocalSpace = true;
 }
 
-// Called when the game starts or when spawned
+
 void AGifCharMagThir::BeginPlay()
 {
 	Super::BeginPlay();
+
+    if (ProjectileMovement)
+    {
+        ProjectileMovement->ProjectileGravityScale = 0.0f;
+    }
 	
 }
 
-// Called every frame
+
 void AGifCharMagThir::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
