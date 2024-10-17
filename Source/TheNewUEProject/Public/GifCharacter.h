@@ -22,13 +22,27 @@ protected:
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<AActor> ProjectlieClass;
 
-
 protected:
-	UPROPERTY(VisibleAnyWhere)
+	UPROPERTY(VisibleAnywhere)
 	UCameraComponent* CameraComp;
 
-	UPROPERTY(VisibleAnyWhere)
-	USpringArmComponent* SpringArmComp;	
+	UPROPERTY(VisibleAnywhere)
+	USpringArmComponent* SpringArmComp;
+
+protected:
+	bool bIsAiming = false;
+
+	UPROPERTY(EditAnywhere)
+	FVector AimingCameraOffset = FVector(0.0f, 50.0f, 50.0f);  // Смещение камеры при прицеливании
+	FVector MaxCameraOffset;   // Максимальное смещение камеры при прицеливании
+	FVector DefaultCameraOffset;   // Изначальные координаты камеры
+
+
+	// Должно быть float, а не FVector, так как это длина SpringArm
+	float DefaultArmLength;  // Изначальная длина SpringArm
+
+	UPROPERTY(EditAnywhere)
+	float CameraZoomSpeed = 10.0f;  // Скорость приближения камеры
 
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -37,14 +51,15 @@ protected:
 	void MoveRAL(float Value);
 
 	void PrimaryAttack();
+	void SpecialAttack();
 
+	void StopAiming();
+	void StartAiming();
 
-
-public:	
+public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
-
 };
